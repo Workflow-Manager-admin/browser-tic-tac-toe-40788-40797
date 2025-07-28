@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-// Theme colors (provided in project description)
+/**
+ * 'Rose Candy' Theme colors.
+ * - Playful, candy-inspired pinks, roses, and pastel tones.
+ */
 const COLORS = {
-  primary: '#2196F3',
-  secondary: '#4CAF50',
-  accent: '#FFC107',
-  lightBoard: '#f6f9fc',
-  boardBorder: '#ececec',
-  winHighlight: '#C8E6C9'
+  primary: '#e979b6',     // Candy rose
+  secondary: '#43c6ac',   // Pastel aqua to complement
+  accent: '#fd7fae',      // Hot candy pink
+  lightBoard: '#ffe4ec',
+  boardBorder: '#eda6ca',
+  winHighlight: '#fff1fa'
 };
 
 /**
@@ -136,7 +139,7 @@ function App() {
   return (
     <div className="ttt-app-bg" style={{minHeight: '100vh'}}>
       <main className="ttt-container">
-        <h1 className="ttt-title" style={{ color: COLORS.primary }}>Tic Tac Toe</h1>
+        <h1 className="ttt-title">Tic Tac Toe</h1>
         <div className="ttt-status-score">
           <div className="ttt-status" aria-live="polite">{status}</div>
           <div className="ttt-score-row">
@@ -159,7 +162,7 @@ function App() {
         </div>
         <div className="ttt-credit">
           <small>
-            Styled with <span style={{color: COLORS.accent, fontWeight: 600}}>#2196F3</span>, <span style={{color: COLORS.secondary, fontWeight: 600}}>#4CAF50</span>, <span style={{color: COLORS.accent, fontWeight: 600}}>#FFC107</span>
+            Styled in <span style={{color: COLORS.primary, fontWeight: 600}}>Rose Candy</span> <span style={{color: COLORS.accent}}>&#10084;&#65039;</span> theme
           </small>
         </div>
       </main>
