@@ -1,14 +1,55 @@
-/* CSS Variables for Theme Management */
+/* 
+  MODERN RETRO THEME 
+  - Neon accents: hot pink, teal, purple
+  - Pixel/arcade-inspired fonts
+  - Subtle grid/pattern backgrounds
+  - Square or slightly rounded edges
+  - Pastel overlays, high contrast
+*/
+
+/* Retro Arcade Font Face */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Global CSS Variables for "Modern Retro" Theme */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --retro-bg-main: #181926;
+  --retro-bg-secondary: #25263a;
+  --retro-pattern: repeating-linear-gradient(135deg, #232339 0 10px, #181926 10px 20px);
+  --retro-board: #251c36;
+  --retro-board-border: #ff6fd8;  /* Neon pink outline */
+  --retro-board-bg: linear-gradient(135deg, #3f51b5 30%, #23d8ff 80%);
+  --retro-square-bg: #212441;
+  --retro-square-hover: #ff6fd8cc;
+  --retro-square-highlight: #fdffb6;
+  --retro-square-shadow: 0 0 6px 2px #ff6fd8;
+  --retro-text-main: #e2e3e9;
+  --retro-text-accent: #fd69fc;
+  --retro-neon-cyan: #23d8ff;
+  --retro-neon-pink: #ff6fd8;
+  --retro-neon-purple: #a259f7;
+  --retro-neon-yellow: #fdffb6;
+  --retro-btn-bg: linear-gradient(90deg, #23d8ff 10%, #ff6fd8 100%);
+  --retro-btn-shadow: 0 0 6px 2px #fd69fc77;
+  --retro-btn-secondary: linear-gradient(90deg, #a259f7, #23d8ff);
+  --retro-border: 3px solid #ff6fd8;
+  --retro-btn-text: #111;
+  --retro-font: 'Press Start 2P', 'Segoe UI', 'Arial', sans-serif;
+  --retro-radius: 10px;
+  --retro-grid-overlay: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 31px,
+    #23d8ff22 32px,
+    transparent 33px
+  ), repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 31px,
+    #ff6fd822 32px,
+    transparent 33px
+  );
 }
+
 
 [data-theme="dark"] {
   /* Dark theme colors */
@@ -22,82 +63,119 @@
 }
 
 .App {
+  /* Retro pixel font + fallback */
+  font-family: var(--retro-font);
   text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background: var(--retro-pattern), var(--retro-bg-main);
+  color: var(--retro-text-main);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background 0.4s, color 0.25s;
+  letter-spacing: 1.5px;
 }
 
-/* -- TIC TAC TOE APP STYLES -- */
+/* MODERN RETRO MAIN BACKGROUND */
 .ttt-app-bg {
-  background: linear-gradient(135deg, #fafdff 60%, #f3fcf5 100%);
+  /* Subtle retro grid with diagonal neon lines */
+  background: var(--retro-grid-overlay), var(--retro-pattern), var(--retro-bg-main);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+/* MODERN RETRO MAIN GAME PANEL */
 .ttt-container {
-  max-width: 360px;
+  max-width: 390px;
   margin: auto;
-  background: #fff;
-  box-shadow: 0 8px 32px rgba(33,150,243,0.10), 0 1.5px 5px rgba(33,150,243,0.07);
-  border-radius: 24px;
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background: rgba(37, 28, 54, 0.90); /* Dark semi-transparent background */
+  box-shadow: 0 0 22px 1px #23d8ff44, 0 1.5px 8px #ff6fd835;
+  border-radius: var(--retro-radius);
+  border: var(--retro-border);
+  padding: 2.1rem 1.7rem 1.5rem 1.7rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
+
 
 /* Top status and score */
 .ttt-title {
-  font-size: 2.1rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-size: 1.40rem;
+  font-family: var(--retro-font);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2.2px;
   margin-bottom: 0.35em;
   text-align: center;
+  color: var(--retro-neon-pink);
+  text-shadow: 
+    0 0 3px #fff,
+    0 0 4px var(--retro-neon-pink),
+    0 0 8px var(--retro-neon-pink),
+    0 0 10px #fd69fc;
+  -webkit-text-stroke: 1px #23d8ff;
+  /* Neon outer glow & cyan outline */
 }
+
 .ttt-status-score {
   width: 100%;
   margin-bottom: 1.2em;
 }
 .ttt-status {
-  font-size: 1.15rem;
+  font-size: 0.82rem;
+  font-family: var(--retro-font);
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 1.2px;
   margin-bottom: 0.2em;
-  color: #333;
+  color: var(--retro-neon-cyan);
+  text-shadow: 0 0 2px #23d8ff, 0 0 8px #23d8ff77;
 }
+
 .ttt-score-row {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 1.6em;
+  gap: 2.7em;
   margin-bottom: 0.6em;
 }
 .ttt-score {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.07em;
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.11em;
+  font-family: var(--retro-font);
 }
 .ttt-score-x {
-  color: #2196F3;
+  color: var(--retro-neon-cyan);
+  text-shadow: 0 0 6px #23d8ff;
 }
 .ttt-score-o {
-  color: #4CAF50;
+  color: #50ffb2;
+  text-shadow: 0 0 6px #50ffb299, 0 0 9px #181926;
 }
 
 /* BOARD LAYOUT */
 .ttt-board {
   display: flex;
   flex-direction: column;
-  margin: 0.6em 0 1.1em 0;
-  background: #f6f9fc;
-  border: 3px solid #ececec;
-  border-radius: 18px;
+  margin: 0.6em 0 1.25em 0;
+  background: var(--retro-board-bg);
+  border: var(--retro-border);
+  border-radius: 8px;
   padding: 1em 0.5em;
-  box-shadow: 0 2px 12px rgba(76,175,80,0.05);
+  box-shadow: 0 0 16px 1px #23d8ff55, 0 2px 16px #ff6fd833;
+  position: relative;
+}
+.ttt-board:before {
+  /* faint grid enhancement for extra retro look */
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--retro-grid-overlay);
+  opacity: 0.21;
+  z-index: 1;
 }
 .ttt-board-row {
   display: flex;
@@ -108,36 +186,50 @@
 .ttt-square {
   width: 70px;
   height: 70px;
-  margin: 0.22em;
-  background: #fff;
-  color: #282c34;
-  font-size: 2.3rem;
-  font-weight: 700;
-  border: 2.5px solid #D1E3FA;
-  border-radius: 12px;
+  margin: 0.18em;
+  background: var(--retro-square-bg);
+  color: var(--retro-text-accent);
+  font-size: 1.38rem;
+  font-family: var(--retro-font);
+  font-weight: 900;
+  border: 2.3px solid var(--retro-neon-pink);
+  border-radius: 5px;
   outline: none;
   cursor: pointer;
-  transition: box-shadow 0.25s, background 0.22s, border-color 0.18s;
-  box-shadow: 0 1px 8px rgba(33,150,243,0.07);
+  box-shadow: 0 0 14px 2px #23d8ff55;
+  text-shadow: 
+    0 0 6px #fd69fc,
+    0 0 15px #23d8ff;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
+  transition: 
+    background 0.20s, 
+    color 0.18s,
+    box-shadow 0.19s,
+    border-color 0.21s;
+  z-index: 2;
 }
-.ttt-square:focus, .ttt-square:hover {
-  border-color: #2196F3;
-  background: #e3f0fe;
+
+.ttt-square:focus,
+.ttt-square:hover {
+  border-color: #fd69fc;
+  background: var(--retro-square-hover);
+  color: #fff;
+  box-shadow: 0 0 18px 1px #fd69fc99;
 }
 
 .ttt-square-highlight {
-  background: #C8E6C9;
-  border-color: #4CAF50;
-  color: #222;
-  animation: ttt-highlight-flash 0.95s cubic-bezier(0.66,0,0.34,1) 2;
+  background: var(--retro-square-highlight);
+  border-color: var(--retro-neon-yellow);
+  color: #181926;
+  animation: ttt-highlight-flash 1.1s cubic-bezier(0.62,0,0.34,1) 2;
+  box-shadow: 0 0 28px 8px #fdffb6cc;
 }
 @keyframes ttt-highlight-flash {
-  0%,100% { background: #C8E6C9; }
-  50% { background: #FFC107; color: #111; }
+  0%,100% { background: var(--retro-square-highlight); }
+  50% { background: var(--retro-neon-pink); color: #fff; }
 }
 
 /* BUTTONS */
@@ -150,46 +242,78 @@
   justify-content: center;
 }
 .ttt-btn {
-  padding: 0.55em 1.3em;
+  min-width: 110px;
+  padding: 0.32em 0.8em;
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 7px;
+  font-size: 0.75rem;
+  font-family: var(--retro-font);
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(33,150,243,0.08);
-  transition: background 0.2s, color 0.2s, transform 0.09s;
+  background: var(--retro-btn-bg);
+  color: var(--retro-btn-text);
+  text-shadow: 0 0 2px #fff, 0 0 6px #fd69fcCC;
+  box-shadow: var(--retro-btn-shadow);
+  border: 2px solid var(--retro-neon-cyan);
+  transition: 
+    background 0.25s, 
+    color 0.19s, 
+    border-color 0.22s, 
+    transform 0.11s,
+    box-shadow 0.16s;
   outline: none;
+  margin: 0 0.10em;
+  position: relative;
+  z-index: 10;
 }
 .ttt-btn-primary {
-  background: #2196F3;
-  color: #fff;
+  background: var(--retro-btn-bg);
+  color: var(--retro-btn-text);
+  border: 2px solid var(--retro-neon-pink);
+  box-shadow: 0 0 18px 3px #ff6fd8cc;
 }
 .ttt-btn-primary:disabled {
-  background: #b6d6fa;
-  color: #f6f6f6;
+  opacity: 0.33;
   cursor: not-allowed;
+  background: #111;
+  color: #444;
+  border: 2px solid #333;
+  box-shadow: none;
+  text-shadow: none;
 }
 .ttt-btn-primary:not(:disabled):hover,
 .ttt-btn-primary:not(:disabled):focus {
-  background: #1769aa;
+  background: linear-gradient(90deg, #fdffb6 10%, #ff6fd8 100%);
+  color: #181926;
+  border: 2px solid #fdffb6;
+  box-shadow: 0 0 16px 10px #fdffb688;
 }
+
 .ttt-btn-secondary {
-  background: #4CAF50;
-  color: #fff;
+  background: var(--retro-btn-secondary);
+  color: var(--retro-btn-text);
+  border: 2px solid #a259f7;
+  box-shadow: 0 0 18px 3px #a259f7cc;
 }
 .ttt-btn-secondary:hover,
 .ttt-btn-secondary:focus {
-  background: #43A047;
+  background: linear-gradient(90deg, #50ffb2, #23d8ff 80%);
+  color: #111;
+  border: 2px solid #50ffb2;
+  box-shadow: 0 0 16px 8px #50ffb2aa;
 }
 
 /* Credits and Misc */
 .ttt-credit {
-  font-size: 0.87em;
-  letter-spacing: 0.01em;
+  font-size: 0.72em;
+  font-family: var(--retro-font);
+  letter-spacing: 0.07em;
   margin-top: 1.2em;
-  color: #888;
+  color: var(--retro-neon-yellow);
   text-align: center;
+  text-shadow: 0 0 7px #ff6fd8, 0 0 15px #fdffb6;
+  opacity: 0.86;
 }
 
 @media (max-width: 600px) {

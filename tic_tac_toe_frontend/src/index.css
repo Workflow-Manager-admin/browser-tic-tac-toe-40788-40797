@@ -1,13 +1,20 @@
+/* Apply arcade font to whole page */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Press Start 2P', 'Consolas', 'Courier New', monospace, sans-serif;
+  background: #181926;
+  color: #e2e3e9;
+  -webkit-font-smoothing: none;
+     -moz-osx-font-smoothing: auto;
+  letter-spacing: 1px;
 }
 
+/* Retro monospace for code blocks */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Press Start 2P', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  color: #ff6fd8;
+  background: #232339;
+  padding: 0.07em 0.4em;
+  border-radius: 5px;
+  font-size: 0.95em;
 }
